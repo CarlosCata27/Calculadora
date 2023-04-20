@@ -12,10 +12,22 @@ app.use(morgan('dev'));
 app.use(express.urlencoded({extended:false}));
 app.use(express.json());
 
-app.use(require('./src/HolaMundo')); 
-app.use('/suma',require('./src/Suma'));
+__dirname = 'C:/Users/Carlos/Documents/GitHub/Calculadora/src/'
 
+const holamundo = require('./routes/ping');
+app.use('/',holamundo); 
 
+const suma = require('./routes/Suma');
+app.use('/suma',suma);
+
+const resta = require('./routes/Resta');
+app.use('/resta',resta);
+
+const multiplicacion = require('./routes/Multiplicacion');
+app.use('/multiplicacion',multiplicacion);
+
+const division = require('./routes/Division');
+app.use('/division',division);
 
 //Iniciando el servidor
 app.listen(app.get('port'),()=>{
